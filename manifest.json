@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Civitai.red 批量下载助手",
-  "version": "1.5.1",
-  "description": "在 civitai.red 列表页和 post 页批量勾选图片/视频，一键下载到「作者/id」目录（原生 chrome.downloads，保证原画质与正确 Referer）。",
+  "version": "1.0.0",
+  "description": "在 civitai.red 列表页和 post 页批量勾选图片/视频，一键下载到「作者/id」目录（原生 chrome.downloads）如果你觉得好用请给一个star⭐ https://github.com/AriesYB/civitai-downloader-chrome-extension",
   "permissions": [
     "downloads",
     "storage",
