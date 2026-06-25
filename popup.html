@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Civitai 下载助手</title>
+  <style>
+    body { width: 280px; margin: 0; font-family: -apple-system, "Segoe UI", Roboto, sans-serif; background: #1f1f23; color: #ececf1; font-size: 13px; }
+    .wrap { padding: 12px; }
+    h1 { font-size: 14px; margin: 0 0 8px; color: #ff6b35; }
+    .type { display: inline-block; padding: 2px 8px; border-radius: 4px; background: #3a3a42; color: #b9b9c2; font-size: 11px; margin-bottom: 10px; }
+    .type.supported { background: #335b3a; color: #8ef0a0; }
+    .type.unsupported { background: #5b3333; color: #f0a0a0; }
+    .stat { padding: 8px 10px; background: #2a2a31; border-radius: 6px; margin-bottom: 10px; }
+    .stat .n { font-size: 20px; font-weight: 700; color: #ff6b35; }
+    .stat .l { font-size: 11px; color: #8a8a93; }
+    .btns { display: flex; flex-direction: column; gap: 6px; }
+    button { padding: 8px 10px; border-radius: 6px; border: 1px solid #3a3a42; background: #2f2f37; color: #ececf1; cursor: pointer; font-size: 13px; }
+    button:hover { background: #3a3a44; }
+    button.primary { background: #ff6b35; border-color: #ff6b35; color: #fff; font-weight: 600; }
+    button.primary:hover { background: #ff7d4d; }
+    button:disabled { opacity: 0.45; cursor: not-allowed; }
+    .row { display: flex; gap: 6px; }
+    .row button { flex: 1; }
+    .footer { margin-top: 10px; font-size: 11px; color: #8a8a93; line-height: 1.5; }
+    .failed { margin-top: 6px; }
+    .failed button { width: 100%; }
+    a { color: #ff8c5a; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Civitai 下载助手</h1>
+    <div id="type" class="type">检测中…</div>
+    <div class="stat">
+      <span class="n" id="sel-count">0</span>
+      <span class="l">个已勾选</span>
+    </div>
+    <div class="btns">
+      <button id="toggle">退出选择模式</button>
+      <div class="row">
+        <button id="all">全选</button>
+        <button id="videos">仅视频</button>
+        <button id="images">仅图片</button>
+      </div>
+      <div class="row">
+        <button id="invert">反选</button>
+        <button id="clear">清空</button>
+      </div>
+      <button id="download" class="primary">下载所选</button>
+      <button id="options">打开设置</button>
+    </div>
+    <div class="footer">
+      首次下载会让你选择一个保存文件夹（之后会记住）。<br>
+      文件存到「所选文件夹/顶层目录/作者/id.ext」。
+    </div>
+  </div>
+  <script src="civitai-core.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

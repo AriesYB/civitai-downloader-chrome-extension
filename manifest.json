@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Civitai.red 批量下载助手",
+  "version": "1.5.1",
+  "description": "在 civitai.red 列表页和 post 页批量勾选图片/视频，一键下载到「作者/id」目录（原生 chrome.downloads，保证原画质与正确 Referer）。",
+  "permissions": [
+    "downloads",
+    "storage",
+    "scripting",
+    "tabs",
+    "notifications",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "*://civitai.red/*",
+    "*://image.civitai.com/*",
+    "*://*.civitai.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "classic"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://civitai.red/*"
+      ],
+      "js": [
+        "civitai-core.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Civitai 批量下载",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

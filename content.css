@@ -1,0 +1,224 @@
+/* content.css — Civitai 下载助手 UI 样式
+ * 所有类名以 cvdl- 前缀避免与站点冲突。
+ */
+
+/* 选中态高亮 */
+.cvdl-selected {
+  outline: 2px solid #ff6b35 !important;
+  outline-offset: -2px;
+}
+
+/* 复选框：常驻可见（不依赖 hover），便于快速勾选 */
+.cvdl-check {
+  position: absolute !important;
+  top: 6px !important;
+  left: 6px !important;
+  z-index: 2147483646 !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 7px !important;
+  background: rgba(0, 0, 0, 0.66) !important;
+  border: 2px solid rgba(255, 255, 255, 0.9) !important;
+  color: #fff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  touch-action: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  opacity: 0.55 !important;          /* 常驻半透明，看得见又不抢眼 */
+  transition: opacity 0.12s ease, background 0.12s ease, transform 0.1s ease !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font: inherit !important;
+  line-height: 0 !important;
+  backdrop-filter: blur(2px) !important;
+}
+.cvdl-check svg {
+  width: 16px !important;
+  height: 16px !important;
+  opacity: 0 !important;
+}
+/* 鼠标悬停卡片或复选框本身时，复选框更明显 */
+*:hover > .cvdl-check {
+  opacity: 1 !important;
+  transform: scale(1.08) !important;
+}
+.cvdl-check:hover {
+  opacity: 1 !important;
+  transform: scale(1.12) !important;
+}
+/* 已勾选态 */
+.cvdl-check.checked {
+  background: #ff6b35 !important;
+  border-color: #ff6b35 !important;
+  opacity: 1 !important;
+}
+.cvdl-check.checked svg {
+  opacity: 1 !important;
+}
+
+/* 选择模式开关按钮：开启=高亮，关闭=灰 */
+#cvdl-panel #cvdl-toggle-mode {
+  width: 100% !important;
+  padding: 8px 10px !important;
+  border-radius: 6px !important;
+  border: 1px solid #3a3a42 !important;
+  background: #2f2f37 !important;
+  color: #ececf1 !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  transition: background 0.12s ease !important;
+}
+#cvdl-panel #cvdl-toggle-mode.toggle-on {
+  background: #335b3a !important;
+  border-color: #4a8a55 !important;
+  color: #8ef0a0 !important;
+}
+#cvdl-panel #cvdl-toggle-mode.toggle-off:hover {
+  background: #3a3a44 !important;
+}
+
+/* 关闭选择模式时隐藏所有复选框 */
+html.cvdl-off .cvdl-check {
+  display: none !important;
+}
+
+/* 悬浮面板 */
+#cvdl-panel {
+  position: fixed !important;
+  top: 80px !important;
+  right: 16px !important;
+  z-index: 2147483647 !important;
+  width: 260px !important;
+  background: #1f1f23 !important;
+  color: #ececf1 !important;
+  border: 1px solid #3a3a42 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  user-select: none !important;
+}
+#cvdl-panel * {
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+}
+#cvdl-panel .cvdl-head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 9px 12px !important;
+  background: #2a2a31 !important;
+  border-bottom: 1px solid #3a3a42 !important;
+}
+#cvdl-panel .cvdl-title {
+  font-weight: 600 !important;
+  flex: 1 !important;
+  color: #ff6b35 !important;
+}
+#cvdl-panel .cvdl-type {
+  font-size: 11px !important;
+  color: #b9b9c2 !important;
+  background: #3a3a42 !important;
+  padding: 2px 7px !important;
+  border-radius: 4px !important;
+}
+#cvdl-panel .cvdl-mini {
+  background: transparent !important;
+  border: 0 !important;
+  color: #b9b9c2 !important;
+  cursor: pointer !important;
+  padding: 0 4px !important;
+  font-size: 14px !important;
+}
+#cvdl-panel .cvdl-body {
+  padding: 10px 12px 12px !important;
+}
+#cvdl-panel .cvdl-row {
+  margin-bottom: 8px !important;
+}
+#cvdl-panel .cvdl-row:last-child {
+  margin-bottom: 0 !important;
+}
+#cvdl-panel #cvdl-status {
+  font-weight: 500 !important;
+}
+#cvdl-panel .cvdl-filters {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 5px !important;
+}
+#cvdl-panel button {
+  padding: 7px 6px !important;
+  border-radius: 6px !important;
+  border: 1px solid #3a3a42 !important;
+  background: #2f2f37 !important;
+  color: #ececf1 !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
+}
+#cvdl-panel .cvdl-filters button {
+  font-size: 12px !important;
+}
+#cvdl-panel button:hover {
+  background: #3a3a44 !important;
+}
+#cvdl-panel button:disabled {
+  opacity: 0.45 !important;
+  cursor: not-allowed !important;
+}
+#cvdl-panel button.primary {
+  width: 100% !important;
+  background: #ff6b35 !important;
+  border-color: #ff6b35 !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  padding: 9px 8px !important;
+}
+#cvdl-panel button.primary:hover {
+  background: #ff7d4d !important;
+}
+
+/* 进度条 */
+#cvdl-panel .cvdl-progress {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+#cvdl-panel .cvdl-bar {
+  flex: 1 !important;
+  height: 8px !important;
+  background: #3a3a42 !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+}
+#cvdl-panel .cvdl-bar-fill {
+  height: 100% !important;
+  width: 0% !important;
+  background: #ff6b35 !important;
+  transition: width 0.2s ease !important;
+}
+#cvdl-panel #cvdl-progtext {
+  font-size: 11px !important;
+  color: #b9b9c2 !important;
+  white-space: nowrap !important;
+}
+#cvdl-panel .cvdl-foot {
+  font-size: 11px !important;
+  color: #8a8a93 !important;
+  margin-top: 4px !important;
+  line-height: 1.5 !important;
+}
+
+/* 收起态 */
+#cvdl-panel.collapsed .cvdl-body {
+  display: none !important;
+}
